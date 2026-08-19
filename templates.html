@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#2563EB">
+<meta name="format-detection" content="telephone=no">
+<title>模板库 · 每日套用 · 五维产品分析</title>
+<style>
+:root {
+  --color-primary:#2563EB; --color-text:#111827; --color-muted:#6B7280;
+  --color-border:#E5E7EB; --color-bg:#F7F8FB; --color-highlight:#EFF4FF;
+  --ff:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
+html{-webkit-text-size-adjust:100%;}
+body{font-family:var(--ff);font-size:16px;line-height:1.8;color:var(--color-text);background:var(--color-bg);max-width:820px;margin:0 auto;padding:64px 18px 48px;word-wrap:break-word;overflow-wrap:break-word;}
+.topnav{position:fixed;top:0;left:0;right:0;z-index:50;background:var(--color-primary);display:flex;align-items:center;justify-content:space-between;padding:10px 14px;box-shadow:0 1px 4px rgba(0,0,0,.12);}
+.topnav .brand{color:#fff;font-weight:600;font-size:15px;white-space:nowrap;}
+.topnav .links{display:flex;gap:5px;overflow-x:auto;}
+.topnav a{color:#fff;text-decoration:none;font-size:13px;padding:6px 11px;border-radius:6px;background:rgba(255,255,255,.14);white-space:nowrap;}
+.topnav a.active{background:rgba(255,255,255,.32);font-weight:600;}
+h1{font-size:25px;text-align:center;margin-bottom:6px;}
+.sub{text-align:center;color:var(--color-muted);font-size:14px;margin-bottom:18px;}
+h2{font-size:20px;margin-top:30px;margin-bottom:12px;padding-bottom:6px;border-bottom:2px solid var(--color-primary);}
+h3{font-size:17px;margin-top:18px;margin-bottom:8px;color:var(--color-primary);}
+p{font-size:16px;line-height:1.8;margin-bottom:10px;}
+ul,ol{font-size:16px;line-height:1.8;padding-left:1.4em;margin-bottom:12px;}
+li{margin-bottom:7px;}
+li strong{color:var(--color-text);}
+blockquote{border-left:3px solid var(--color-primary);background:var(--color-highlight);padding:10px 14px;margin:12px 0;border-radius:0 8px 8px 0;font-size:15px;line-height:1.8;color:var(--color-text);}
+blockquote p{margin:0;}
+pre{background:#fff;border:1px solid var(--color-border);border-radius:10px;padding:14px;font-family:Consolas,"Courier New",monospace;font-size:14px;line-height:1.7;overflow-x:auto;margin-bottom:14px;}
+code{font-family:Consolas,"Courier New",monospace;font-size:.9em;background:var(--color-highlight);padding:1px 5px;border-radius:4px;}
+pre code{background:none;padding:0;}
+.table-scroll{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin-bottom:14px;border-radius:8px;}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:14px;background:#fff;}
+th,td{padding:9px 11px;border:1px solid var(--color-border);line-height:1.6;vertical-align:top;text-align:left;}
+th{font-weight:600;background:var(--color-highlight);white-space:nowrap;}
+hr{border:none;border-top:1px solid var(--color-border);margin:26px 0;}
+a{color:var(--color-primary);}
+a:hover{opacity:.8;}
+footer{margin-top:28px;color:var(--color-muted);font-size:13px;line-height:1.7;text-align:center;}
+.toc-card{background:#fff;border:1px solid var(--color-border);border-radius:14px;padding:16px 18px;margin-bottom:18px;box-shadow:0 2px 8px rgba(0,0,0,.04);}
+.toc-card h3{font-size:16px;margin-top:0;}
+.toc-card table{margin:0;}
+@media (max-width:540px){
+  body{padding:60px 12px 40px;}
+  h1{font-size:21px;}
+  h2{font-size:18px;}
+  table{font-size:13px;min-width:460px;}
+  th,td{padding:8px 9px;}
+  pre{font-size:13px;}
+}
+</style>
+</head>
+<body>
+<nav class="topnav"><span class="brand">五维产品分析</span><span class="links"><a href="index.html">首页</a><a href="method1.html">方法论01</a><a href="method2.html">方法论02</a><a href="templates.html" class="active">模板库</a><a href="library.html">素材与跟踪</a></span></nav>
+<main>
+<h1>模板库 · 每日套用</h1>
+<blockquote>词条页 · 五维产品分析知识站　|　<a href="index.html">← 返回首页</a><br>四个可套用模板：每日拍摄 SOP / 选品拆解 / 钩子脚本 / 周复盘。</blockquote>
+<hr>
+<h2>模板 01 · 每日拍摄 SOP 清单</h2>
+<blockquote>每天开拍前对照执行，全部打勾后开拍。</blockquote>
+<div class="table-scroll"><table><thead><tr><td>时段</td><td>动作</td><td>时长</td></tr></thead><tbody><tr><td>开拍前</td><td>查今日产品清单，L1 检索重复产品</td><td>5 min</td></tr><tr><td>开拍前</td><td>批量写脚本（查 L3 模板库），确定每条的钩子原文</td><td>30 min</td></tr><tr><td>开拍前</td><td>拍摄清单排序：同场景/同灯光排一起</td><td>10 min</td></tr><tr><td>拍摄中</td><td>按脚本执行，每条随手勾参数（机位/景别/灯光/运镜）</td><td>单条 ≤30s</td></tr><tr><td>拍摄中</td><td>同钩子拍 2-3 版演绎，供 A/B</td><td>—</td></tr><tr><td>空档期</td><td>录 L2 明细</td><td>碎片时间</td></tr><tr><td>收工前</td><td>检查 L2 录全（不过夜），标记值得关注的成片</td><td>15 min</td></tr></tbody></table></div>
+<h2>模板 02 · 选品拆解模板（可填空）</h2>
+<blockquote>接新产品直接复制本表填写，产出即脚本弹药。</blockquote>
+<div class="table-scroll"><table><thead><tr><td>维度</td><td>核心追问</td><td>我的答案</td></tr></thead><tbody><tr><td>痛点</td><td>用户最烦的是什么？（看竞品差评/品类吐槽）</td><td>（填）</td></tr><tr><td>人群</td><td>谁最痛？食用者/购买者/影响者分别是谁？</td><td>（填）</td></tr><tr><td>需求</td><td>表层需求背后，要完成什么"事"？</td><td>（填）</td></tr><tr><td>环境</td><td>在哪些场景用？每场景有什么约束？</td><td>（填）</td></tr><tr><td>卖点</td><td>凭什么赢？一句话打透</td><td>（填）</td></tr></tbody></table></div>
+<p><strong>产出区</strong>：一句话价值主张：＿＿＿＿＿＿</p>
+<p><strong>候选钩子</strong>：① ＿＿＿＿　② ＿＿＿＿　③ ＿＿＿＿</p>
+<p><strong>本次主攻方向</strong>（只选1个）：□ 痛点　□ 人群　□ 场景　□ 卖点</p>
+<h2>模板 03 · 钩子/脚本模板库</h2>
+<p><strong>已验证钩子类型（按需套用）</strong></p>
+<div class="table-scroll"><table><thead><tr><td>钩子类型</td><td>句式模板</td><td>适用</td></tr></thead><tbody><tr><td>痛点直击</td><td>"你家也是××吗？" / "别再给孩子吃××了"</td><td>焦虑型品类（母婴/健康）</td></tr><tr><td>场景代入</td><td>"下班回家×分钟，搞定一顿××"</td><td>便捷型产品</td></tr><tr><td>对比反差</td><td>"以前××，现在××"</td><td>升级替代型</td></tr><tr><td>结果前置</td><td>"3 天，孩子主动要吃饭了"</td><td>效果可视型</td></tr><tr><td>反常识</td><td>"××配料表越短越好"</td><td>成分党人群</td></tr><tr><td>身份代入</td><td>"当妈的都懂" / "健身党看过来"</td><td>圈层人群</td></tr></tbody></table></div>
+<p><strong>脚本三段式结构</strong></p>
+<pre><code>第 1 段（0-3s）钩子：一句原文，直击目标人群的痛点或好奇
+第 2 段（3-15s）价值：痛点/场景 → 方案（产品如何解决）→ 信任状（检测/成分/口碑）
+第 3 段（15s-尾）行动：优惠/限时/点击引导</code></pre>
+<blockquote>用法：先按品类查 L3 特征库选钩子类型 → 套句式写原文 → 一条素材只打一个卖点。</blockquote>
+<h2>模板 04 · 周复盘模板</h2>
+<blockquote>每周五按行回填，每行一条素材；王牌与废片各挑 1 条做对照分析。</blockquote>
+<div class="table-scroll"><table><thead><tr><td>素材ID</td><td>上线时间</td><td>消耗</td><td>点击率</td><td>完播率</td><td>转化成本</td><td>跑量天数</td><td>定级</td><td>结论/备注</td></tr></thead><tbody><tr><td>S-____-___</td><td>（填）</td><td>（填）</td><td>（填）</td><td>（填）</td><td>（填）</td><td>（填）</td><td>王牌/可用/平庸/废片</td><td>（填）</td></tr></tbody></table></div>
+<p><strong>定级规则</strong>：</p>
+<ul>
+<li><strong>王牌</strong>：消耗/成本显著优于账户均值，且跑量 >3 天；</li>
+<li><strong>可用</strong>：达标但不突出；</li>
+<li><strong>平庸</strong>：有消耗但成本偏高；</li>
+<li><strong>废片</strong>：几乎无消耗或点击率极低。</li>
+</ul>
+<p><strong>每周必做对照</strong>：同产品下「王牌 vs 废片」对比一组——产品相同，差异只在创意，这是最有价值的分析单元。结论摘入 L3 特征库，附素材ID。</p>
+</main>
+<footer>
+<p>五维产品分析 · 知识站 v2.1 多页版 · 2026-08-19 · 每月末迭代</p>
+</footer>
+</body>
+</html>
