@@ -3,117 +3,168 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#2563EB">
+<meta name="theme-color" content="#4051B5">
 <meta name="format-detection" content="telephone=no">
 <title>方法论 01 · 五维产品分析法</title>
 <style>
-:root {
-  --color-primary:#2563EB; --color-text:#111827; --color-muted:#6B7280;
-  --color-border:#E5E7EB; --color-bg:#F7F8FB; --color-highlight:#EFF4FF;
-  --ff:"PingFang SC","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;
+:root{
+  --md-primary:#4051B5; --md-primary-light:#5D6CC0; --md-primary-dark:#303FA1;
+  --md-accent:#526CFE; --md-accent-t:rgba(82,108,254,.08);
+  --md-text:rgba(0,0,0,.87); --md-text-light:rgba(0,0,0,.54); --md-text-lighter:rgba(0,0,0,.38);
+  --md-bg:#fff; --md-code-bg:#F5F5F5; --md-border:rgba(0,0,0,.07);
+  --md-font:"Roboto",-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",Helvetica,Arial,sans-serif;
+  --md-mono:"Roboto Mono",Consolas,Menlo,monospace;
 }
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
-html{-webkit-text-size-adjust:100%;}
-body{font-family:var(--ff);font-size:16px;line-height:1.8;color:var(--color-text);background:var(--color-bg);max-width:820px;margin:0 auto;padding:64px 18px 48px;word-wrap:break-word;overflow-wrap:break-word;}
-.topnav{position:fixed;top:0;left:0;right:0;z-index:50;background:var(--color-primary);display:flex;align-items:center;justify-content:space-between;padding:10px 14px;box-shadow:0 1px 4px rgba(0,0,0,.12);}
-.topnav .brand{color:#fff;font-weight:600;font-size:15px;white-space:nowrap;}
-.topnav .links{display:flex;gap:5px;overflow-x:auto;}
-.topnav a{color:#fff;text-decoration:none;font-size:13px;padding:6px 11px;border-radius:6px;background:rgba(255,255,255,.14);white-space:nowrap;}
-.topnav a.active{background:rgba(255,255,255,.32);font-weight:600;}
-h1{font-size:25px;text-align:center;margin-bottom:6px;}
-.sub{text-align:center;color:var(--color-muted);font-size:14px;margin-bottom:18px;}
-h2{font-size:20px;margin-top:30px;margin-bottom:12px;padding-bottom:6px;border-bottom:2px solid var(--color-primary);}
-h3{font-size:17px;margin-top:18px;margin-bottom:8px;color:var(--color-primary);}
-p{font-size:16px;line-height:1.8;margin-bottom:10px;}
-ul,ol{font-size:16px;line-height:1.8;padding-left:1.4em;margin-bottom:12px;}
-li{margin-bottom:7px;}
-li strong{color:var(--color-text);}
-blockquote{border-left:3px solid var(--color-primary);background:var(--color-highlight);padding:10px 14px;margin:12px 0;border-radius:0 8px 8px 0;font-size:15px;line-height:1.8;color:var(--color-text);}
-blockquote p{margin:0;}
-pre{background:#fff;border:1px solid var(--color-border);border-radius:10px;padding:14px;font-family:Consolas,"Courier New",monospace;font-size:14px;line-height:1.7;overflow-x:auto;margin-bottom:14px;}
-code{font-family:Consolas,"Courier New",monospace;font-size:.9em;background:var(--color-highlight);padding:1px 5px;border-radius:4px;}
-pre code{background:none;padding:0;}
-.table-scroll{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;margin-bottom:14px;border-radius:8px;}
-table{border-collapse:collapse;width:100%;min-width:520px;font-size:14px;background:#fff;}
-th,td{padding:9px 11px;border:1px solid var(--color-border);line-height:1.6;vertical-align:top;text-align:left;}
-th{font-weight:600;background:var(--color-highlight);white-space:nowrap;}
-hr{border:none;border-top:1px solid var(--color-border);margin:26px 0;}
-a{color:var(--color-primary);}
-a:hover{opacity:.8;}
-footer{margin-top:28px;color:var(--color-muted);font-size:13px;line-height:1.7;text-align:center;}
-.toc-card{background:#fff;border:1px solid var(--color-border);border-radius:14px;padding:16px 18px;margin-bottom:18px;box-shadow:0 2px 8px rgba(0,0,0,.04);}
-.toc-card h3{font-size:16px;margin-top:0;}
-.toc-card table{margin:0;}
-@media (max-width:540px){
-  body{padding:60px 12px 40px;}
-  h1{font-size:21px;}
-  h2{font-size:18px;}
-  table{font-size:13px;min-width:460px;}
-  th,td{padding:8px 9px;}
-  pre{font-size:13px;}
+body{font-family:var(--md-font);color:var(--md-text);background:var(--md-bg);font-size:16px;line-height:1.7;}
+
+.md-header{position:fixed;top:0;left:0;right:0;z-index:50;background:var(--md-primary);color:#fff;
+  box-shadow:0 0 .2rem rgba(0,0,0,.1),0 .2rem .4rem rgba(0,0,0,.2);}
+.md-header__inner{max-width:980px;margin:0 auto;display:flex;align-items:center;gap:10px;padding:9px 16px;}
+.md-logo{display:flex;align-items:center;gap:8px;color:#fff;text-decoration:none;font-weight:500;font-size:16px;white-space:nowrap;}
+.md-logo svg{width:26px;height:26px;fill:currentColor;flex:none;}
+.md-nav{display:flex;gap:4px;margin-left:auto;overflow-x:auto;scrollbar-width:none;}
+.md-nav::-webkit-scrollbar{display:none;}
+.md-nav a{color:rgba(255,255,255,.85);text-decoration:none;font-size:14px;padding:6px 12px;border-radius:18px;white-space:nowrap;transition:background .15s;}
+.md-nav a:hover{background:rgba(255,255,255,.15);}
+.md-nav a.active{background:#fff;color:var(--md-primary);font-weight:500;}
+
+.md-breadcrumb{max-width:920px;margin:72px auto 0;padding:12px 20px 0;font-size:13px;color:var(--md-text-light);}
+.md-breadcrumb a{color:var(--md-primary);text-decoration:none;}
+.md-breadcrumb a:hover{text-decoration:underline;}
+.md-breadcrumb .sep{margin:0 6px;color:var(--md-text-lighter);}
+
+.md-main{max-width:920px;margin:0 auto;padding:18px 20px 56px;}
+
+.md-typeset h1{font-size:29px;font-weight:700;margin:14px 0 4px;letter-spacing:-.2px;}
+.md-page-icon{display:flex;align-items:center;gap:10px;margin:10px 0 2px;}
+.md-page-icon svg{width:30px;height:30px;fill:var(--md-primary);}
+.md-page-sub{color:var(--md-text-light);font-size:14.5px;margin-bottom:6px;}
+.md-typeset h2{font-size:21px;font-weight:600;margin:32px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--md-border);}
+.md-typeset h3{font-size:17px;font-weight:600;margin:20px 0 8px;color:var(--md-primary-dark);}
+.md-typeset p{margin:10px 0;}
+.md-typeset ul,.md-typeset ol{padding-left:1.5em;margin:10px 0;}
+.md-typeset li{margin:5px 0;}
+.md-typeset a{color:var(--md-primary);text-decoration:none;}
+.md-typeset a:hover{text-decoration:underline;}
+.md-typeset code{font-family:var(--md-mono);background:var(--md-code-bg);padding:1px 5px;border-radius:4px;font-size:.88em;}
+.md-typeset pre{background:var(--md-code-bg);padding:14px 16px;border-radius:6px;overflow-x:auto;margin:12px 0;font-size:13.5px;line-height:1.6;}
+.md-typeset pre code{background:none;padding:0;}
+
+.md-table{width:100%;overflow-x:auto;margin:14px 0;border:1px solid var(--md-border);border-radius:6px;}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:14px;}
+th,td{padding:9px 13px;border-bottom:1px solid var(--md-border);text-align:left;vertical-align:top;}
+tr:last-child td{border-bottom:none;}
+th{background:#F5F5F5;font-weight:600;white-space:nowrap;}
+tbody tr:hover{background:rgba(82,108,254,.05);}
+
+.md-admonition{position:relative;margin:16px 0;padding:12px 16px 12px 44px;border-radius:6px;border-left:4px solid #448AFF;background:rgba(68,138,255,.07);font-size:15px;line-height:1.7;}
+.md-admonition svg{position:absolute;left:14px;top:14px;width:20px;height:20px;fill:#448AFF;flex:none;}
+.md-admonition.note{border-color:#448AFF;background:rgba(68,138,255,.07);}
+.md-admonition.note svg{fill:#448AFF;}
+.md-admonition.warning{border-color:#FF9100;background:rgba(255,145,0,.08);}
+.md-admonition.warning svg{fill:#FF9100;}
+.md-admonition.tip{border-color:#00B0FF;background:rgba(0,176,255,.08);}
+.md-admonition.tip svg{fill:#00B0FF;}
+
+.md-tag{display:inline-block;background:rgba(64,81,181,.1);color:var(--md-primary-dark);font-size:12px;padding:2px 10px;border-radius:12px;margin:0 4px 4px 0;font-weight:500;}
+
+.md-hero{background:linear-gradient(135deg,var(--md-primary) 0%,var(--md-accent) 100%);color:#fff;border-radius:12px;padding:28px 26px;margin:16px 0 24px;box-shadow:0 4px 16px rgba(64,81,181,.25);}
+.md-hero h1{color:#fff;margin:0 0 8px;letter-spacing:-.2px;}
+.md-hero p{color:rgba(255,255,255,.92);margin:6px 0;font-size:15px;}
+.md-hero .hero-tag{display:inline-block;background:rgba(255,255,255,.2);color:#fff;font-size:12px;padding:3px 12px;border-radius:14px;margin-top:8px;}
+
+.md-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin:18px 0;}
+.md-card{display:flex;flex-direction:column;gap:8px;background:#fff;border:1px solid var(--md-border);border-radius:10px;padding:18px;text-decoration:none;color:var(--md-text);transition:box-shadow .15s,transform .15s;}
+.md-card:hover{box-shadow:0 4px 14px rgba(64,81,181,.18);transform:translateY(-2px);}
+.md-card svg{width:28px;height:28px;fill:var(--md-primary);}
+.md-card h3{font-size:16px;color:var(--md-text);font-weight:600;}
+.md-card p{font-size:13.5px;color:var(--md-text-light);margin:0;line-height:1.6;}
+.md-card .go{color:var(--md-primary);font-size:13px;font-weight:500;margin-top:auto;}
+
+.md-diagram{margin:18px 0;background:#FAFBFF;border:1px solid var(--md-border);border-radius:10px;padding:16px 12px;text-align:center;}
+.md-diagram svg{max-width:100%;height:auto;}
+
+hr{border:none;border-top:1px solid var(--md-border);margin:30px 0;}
+
+.md-footer{background:#303030;color:rgba(255,255,255,.7);padding:24px 20px 28px;margin-top:40px;font-size:13px;line-height:1.8;}
+.md-footer__inner{max-width:920px;margin:0 auto;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;}
+
+@media (max-width:720px){
+  .md-header__inner{flex-wrap:wrap;padding:8px 12px;gap:6px;}
+  .md-nav{width:100%;order:3;margin-left:0;}
+  .md-breadcrumb{margin-top:98px;padding:10px 14px 0;}
+  .md-main{padding:14px 14px 44px;}
+  .md-typeset h1{font-size:23px;}
+  .md-typeset h2{font-size:18px;}
+  .md-hero{padding:22px 18px;}
+  .md-cards{grid-template-columns:1fr;}
+  th,td{padding:8px 10px;}
+  .md-footer__inner{flex-direction:column;gap:6px;}
 }
 </style>
 </head>
 <body>
-<nav class="topnav"><span class="brand">五维产品分析</span><span class="links"><a href="index.html">首页</a><a href="method1.html" class="active">方法论01</a><a href="method2.html">方法论02</a><a href="templates.html">模板库</a><a href="library.html">素材与跟踪</a></span></nav>
-<main>
-<h1>方法论 01 · 五维产品分析法</h1>
-<blockquote>词条页 · 五维产品分析知识站　|　<a href="index.html">← 返回首页</a></blockquote>
+<header class="md-header">
+  <div class="md-header__inner">
+    <a class="md-logo" href="index.html">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/></svg>
+      <span>五维产品分析</span>
+    </a>
+    <nav class="md-nav"><a href="index.html">首页</a><a href="method1.html" class="active">方法论01</a><a href="method2.html">方法论02</a><a href="templates.html">模板库</a><a href="library.html">素材与跟踪</a></nav>
+  </div>
+</header>
+<div class="md-breadcrumb"><a href="index.html">首页</a><span class="sep">›</span><span>方法论 01 · 五维产品分析法</span></div>
+<main class="md-main md-typeset">
+  <div class="md-page-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M11.99 18.54l-7.37-5.73L3 14.07l9 7 9-7-1.63-1.27-7.38 5.73zM12 16l7.36-5.73L21 9l-9-7-9 7 1.63 1.27L12 16z"/></svg>
+</div><h1>方法论 01 · 五维产品分析法</h1><p class="md-page-sub">选品理解 · 词条</p><div class="md-admonition note"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg><div>词条页 · 五维产品分析知识站　|　<a href="index.html">← 返回首页</a></div></div>
 <h2>定义与核心价值</h2>
 <p><strong>五维产品分析法</strong>是一种选品理解框架：面对任何一个要拍的产品，先按「痛点→人群→需求→环境→卖点」五个维度拆透，再决定拍什么、怎么拍。它的核心价值是<strong>把"拍什么"从拍脑袋变成可推导的流程</strong>，让选题从"拍好看"升级为"为转化服务"——你理解产品有多深，素材上限就有多高。</p>
 <h2>核心概念：五个维度</h2>
 <p>五维不是并列罗列，而是<strong>从痛点出发、落到卖点</strong>的推导链：</p>
-<ul>
 <li><strong>痛点</strong>：用户不用/用不好的真实麻烦。最核心，先想这个——它决定钩子。</li>
 <li><strong>特殊人群</strong>：谁最痛、最该被精准触达（母婴 / 健身 / 银发…）。吃的人、买的人、影响的人往往不是同一人。</li>
 <li><strong>特殊需求</strong>：该人群在场景里要满足的具体诉求。往深挖一层：表层需求背后，用户真正想完成的"事"是什么？</li>
 <li><strong>特殊环境</strong>：使用发生的典型时空（通勤 / 厨房 / 户外…），决定画面语境与产品约束。</li>
 <li><strong>核心卖点</strong>：综合以上四点，产品凭什么赢——一句话打透，并翻成用户听得懂的利益。</li>
-</ul>
+<div class="md-diagram"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660 112" role="img" aria-label="五维推导链"><rect x="18" y="18" width="112" height="74" rx="10" fill="#4051B5" opacity="0.55"/><text x="74.0" y="48" text-anchor="middle" font-size="15" font-weight="700" fill="#fff" font-family="Roboto,sans-serif">1 痛点</text><text x="74.0" y="70" text-anchor="middle" font-size="10.5" fill="rgba(255,255,255,.95)" font-family="Roboto,sans-serif">用户最烦什么</text><path d="M133 55.0 l8 -4 v8 z" fill="#9AA5C9"/><rect x="146" y="18" width="112" height="74" rx="10" fill="#4051B5" opacity="0.65"/><text x="202.0" y="48" text-anchor="middle" font-size="15" font-weight="700" fill="#fff" font-family="Roboto,sans-serif">2 人群</text><text x="202.0" y="70" text-anchor="middle" font-size="10.5" fill="rgba(255,255,255,.95)" font-family="Roboto,sans-serif">谁最痛</text><path d="M261 55.0 l8 -4 v8 z" fill="#9AA5C9"/><rect x="274" y="18" width="112" height="74" rx="10" fill="#4051B5" opacity="0.75"/><text x="330.0" y="48" text-anchor="middle" font-size="15" font-weight="700" fill="#fff" font-family="Roboto,sans-serif">3 需求</text><text x="330.0" y="70" text-anchor="middle" font-size="10.5" fill="rgba(255,255,255,.95)" font-family="Roboto,sans-serif">深层任务</text><path d="M389 55.0 l8 -4 v8 z" fill="#9AA5C9"/><rect x="402" y="18" width="112" height="74" rx="10" fill="#4051B5" opacity="0.8500000000000001"/><text x="458.0" y="48" text-anchor="middle" font-size="15" font-weight="700" fill="#fff" font-family="Roboto,sans-serif">4 环境</text><text x="458.0" y="70" text-anchor="middle" font-size="10.5" fill="rgba(255,255,255,.95)" font-family="Roboto,sans-serif">在哪用</text><path d="M517 55.0 l8 -4 v8 z" fill="#9AA5C9"/><rect x="530" y="18" width="112" height="74" rx="10" fill="#526CFE" opacity="0.9500000000000001"/><text x="586.0" y="48" text-anchor="middle" font-size="15" font-weight="700" fill="#fff" font-family="Roboto,sans-serif">5 卖点</text><text x="586.0" y="70" text-anchor="middle" font-size="10.5" fill="rgba(255,255,255,.95)" font-family="Roboto,sans-serif">凭什么赢</text></svg></div>
 <h2>核心模板：五步推导表</h2>
-<div class="table-scroll"><table><thead><tr><td>步骤</td><td>问自己</td><td>产出</td></tr></thead><tbody><tr><td>1 痛点</td><td>用户最烦的是什么？（看竞品差评、品类吐槽）</td><td>痛点清单</td></tr><tr><td>2 人群</td><td>谁最痛？食用者/购买者/影响者分别是谁？</td><td>目标人群画像</td></tr><tr><td>3 需求</td><td>表层需求背后要完成什么"事"？哪块没人满足？</td><td>需求表述</td></tr><tr><td>4 环境</td><td>在哪些场景用？每个场景有什么约束？</td><td>场景×约束矩阵</td></tr><tr><td>5 卖点</td><td>我的差异怎么解这题？凭什么赢？</td><td>一句话卖点 + 3 条候选钩子</td></tr></tbody></table></div>
-<blockquote><strong>执行顺序口诀</strong>：痛点（骂什么）→ 人群（谁在骂）→ 需求（深层任务）→ 环境（在哪发生）→ 卖点（我怎么解）。</blockquote>
+<div class="md-table"><table><thead><tr><td>步骤</td><td>问自己</td><td>产出</td></tr></thead><tbody><tr><td>1 痛点</td><td>用户最烦的是什么？（看竞品差评、品类吐槽）</td><td>痛点清单</td></tr><tr><td>2 人群</td><td>谁最痛？食用者/购买者/影响者分别是谁？</td><td>目标人群画像</td></tr><tr><td>3 需求</td><td>表层需求背后要完成什么"事"？哪块没人满足？</td><td>需求表述</td></tr><tr><td>4 环境</td><td>在哪些场景用？每个场景有什么约束？</td><td>场景×约束矩阵</td></tr><tr><td>5 卖点</td><td>我的差异怎么解这题？凭什么赢？</td><td>一句话卖点 + 3 条候选钩子</td></tr></tbody></table></div>
+<div class="md-admonition note"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg><div><strong>执行顺序口诀</strong>：痛点（骂什么）→ 人群（谁在骂）→ 需求（深层任务）→ 环境（在哪发生）→ 卖点（我怎么解）。</div></div>
 <h2>实施步骤（现场版）</h2>
-<ol>
 <li><strong>开拆前先看竞品和差评</strong>：用户骂什么，痛点就在哪里；不要凭想象编痛点。</li>
 <li><strong>逐维填表，每维要证据</strong>：评论、竞品对比、配料表/参数，而不是"我觉得"。</li>
 <li><strong>卖点用一句话收口</strong>：写不出就是没想透，回去重拆。</li>
 <li><strong>产出 3 条候选钩子</strong>：直接作为脚本弹药进入下一环节。</li>
-</ol>
 <h2>应用案例：不二宝贝 · 牛肉海苔碎拌饭料</h2>
 <p><strong>产品基线</strong>：96g/袋、独立小包，主打"三无标准"（无防腐剂/香精/增稠剂）的婴幼儿辅食；牛肉松 ≥40%；京东 2 袋 22 包约 ¥49.9。</p>
-<ul>
 <li><strong>痛点</strong>：添加剂焦虑、饭渣宝宝不吃、肉泥没口感不锻炼咀嚼、海苔碎受潮/颗粒呛咳、外出喂养难。</li>
 <li><strong>人群</strong>：核心 = 1-3 岁宝宝的妈妈（饭渣家庭、成分党、食安敏感）；次级 = 隔代祖辈、托班加餐、送礼。</li>
 <li><strong>需求</strong>："省心搭子"（一袋解决调味+增香+营养）、"干净且好吃"兼得、自主进食锻炼精细动作。</li>
 <li><strong>环境</strong>：居家正餐 / 亲子饭团手工 / 外出旅行 / 加餐干吃，附硬约束（防潮、低钠、控量）。</li>
 <li><strong>卖点</strong>：「让宝宝主动干饭的无添加真肉松拌饭料」——真牛肉松 ≥40% + 低温慢煮保留肉纤维（区别于竞品海苔粉/调味粉）。</li>
-</ul>
 <p><strong>案例→素材的落地衔接</strong>：</p>
-<div class="table-scroll"><table><thead><tr><td>五维产出</td><td>素材动作</td></tr></thead><tbody><tr><td>卖点 + 信任状</td><td>主图白底 + 颗粒特写 + 尺寸参照；详情页放 SGS 检测背书</td></tr><tr><td>人群 + 痛点</td><td>前 3 秒钩子："你家也是饭渣宝宝吗？" 直击宝妈焦虑</td></tr><tr><td>环境 + 需求</td><td>分镜覆盖居家拌饭 / 外出便携 / 饭团手工三类场景</td></tr></tbody></table></div>
+<div class="md-table"><table><thead><tr><td>五维产出</td><td>素材动作</td></tr></thead><tbody><tr><td>卖点 + 信任状</td><td>主图白底 + 颗粒特写 + 尺寸参照；详情页放 SGS 检测背书</td></tr><tr><td>人群 + 痛点</td><td>前 3 秒钩子："你家也是饭渣宝宝吗？" 直击宝妈焦虑</td></tr><tr><td>环境 + 需求</td><td>分镜覆盖居家拌饭 / 外出便携 / 饭团手工三类场景</td></tr></tbody></table></div>
 <h2>价值与局限</h2>
 <p><strong>核心价值</strong></p>
-<ul>
 <li>把"拍什么"从拍脑袋变成可推导的流程，素材命中率显著提升；</li>
 <li>五维产出（痛点→解法、场景→约束）可直接当脚本素材，省写稿时间；</li>
 <li>重复产品再来时，翻档案即可复用，不重做分析。</li>
-</ul>
 <p><strong>潜在局限</strong></p>
-<ul>
 <li>五维需要证据支撑（评论、竞品、配料表），偷懒拍脑袋会退回"我觉得"；</li>
 <li>一版拆解≠永远正确，卖点会随市场变化，需在复盘中持续修订。</li>
-</ul>
 <h2>延伸与关联</h2>
-<ul>
 <li><strong>模板 02 选品拆解模板</strong>：本方法论的填空版，接新产品直接照着填（见「模板库」页）；</li>
 <li><strong>素材库 L1 产品档案</strong>：拆解结果存档处，重复产品先查这里（见「素材库四层结构」页）；</li>
 <li><strong>方法论 02 环节一"选品分析"</strong>：五维拆解在生产闭环中的位置。</li>
-</ul>
 <h2>来源参考</h2>
 <p>源自"鲁大魔方法论"（五维度：核心卖点·特殊人群·特殊需求·特殊环境·痛点），并结合个人拍摄实战在栏目与表述上做了适配。方法论锚点还包括：标题公式【核心关键词】+【差异化卖点】+【适用场景】、FABE 法则、流量蜜罐思维（逆向拆解广告）。</p>
 </main>
-<footer>
-<p>五维产品分析 · 知识站 v2.1 多页版 · 2026-08-19 · 每月末迭代</p>
+<footer class="md-footer">
+  <div class="md-footer__inner">
+    <span>五维产品分析 · 知识站 v2.2（Material 风格）</span>
+    <span>2026-08-19 · 每月末迭代 · 内容更新请告知维护者</span>
+  </div>
 </footer>
 </body>
 </html>
