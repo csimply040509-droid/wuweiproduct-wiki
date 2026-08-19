@@ -3,102 +3,129 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#4051B5">
+<meta name="theme-color" content="#f5f5f7">
 <meta name="format-detection" content="telephone=no">
 <title>五维产品分析 · 知识站</title>
 <style>
 :root{
-  --md-primary:#4051B5; --md-primary-light:#5D6CC0; --md-primary-dark:#303FA1;
-  --md-accent:#526CFE; --md-accent-t:rgba(82,108,254,.08);
-  --md-text:rgba(0,0,0,.87); --md-text-light:rgba(0,0,0,.54); --md-text-lighter:rgba(0,0,0,.38);
-  --md-bg:#fff; --md-code-bg:#F5F5F5; --md-border:rgba(0,0,0,.07);
-  --md-font:"Roboto",-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",Helvetica,Arial,sans-serif;
-  --md-mono:"Roboto Mono",Consolas,Menlo,monospace;
+  --accent:#0071e3; --accent-strong:#0066cc;
+  --text:#1d1d1f; --text-2:rgba(0,0,0,.56); --text-3:rgba(0,0,0,.36);
+  --bg:#ffffff; --band:#f5f5f7; --band-2:#fafafc;
+  --hairline:rgba(0,0,0,.08);
+  --card-shadow:0 2px 16px rgba(0,0,0,.06);
+  --card-shadow-hover:0 10px 28px rgba(0,0,0,.12);
+  --radius:12px;
+  --font:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display","Helvetica Neue","PingFang SC","Microsoft YaHei",sans-serif;
+  --mono:"SF Mono",ui-monospace,SFMono-Regular,Consolas,Menlo,monospace;
 }
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent;}
-body{font-family:var(--md-font);color:var(--md-text);background:var(--md-bg);font-size:16px;line-height:1.7;}
+html{scroll-padding-top:76px;}
+body{font-family:var(--font);color:var(--text);background:var(--bg);font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased;}
 
-.md-header{position:fixed;top:0;left:0;right:0;z-index:50;background:var(--md-primary);color:#fff;
-  box-shadow:0 0 .2rem rgba(0,0,0,.1),0 .2rem .4rem rgba(0,0,0,.2);}
-.md-header__inner{max-width:980px;margin:0 auto;display:flex;align-items:center;gap:10px;padding:9px 16px;}
-.md-logo{display:flex;align-items:center;gap:8px;color:#fff;text-decoration:none;font-weight:500;font-size:16px;white-space:nowrap;}
-.md-logo svg{width:26px;height:26px;fill:currentColor;flex:none;}
-.md-nav{display:flex;gap:4px;margin-left:auto;overflow-x:auto;scrollbar-width:none;}
+/* ---------- 导航（Apple 玻璃） ---------- */
+.md-header{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(0,0,0,.8);
+  backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);
+  box-shadow:0 1px 0 rgba(0,0,0,.12);}
+@supports not ((backdrop-filter:blur(20px)) or (-webkit-backdrop-filter:blur(20px))){
+  .md-header{background:#1d1d1f;}
+}
+.md-header__inner{max-width:980px;margin:0 auto;display:flex;align-items:center;gap:12px;padding:0 20px;height:48px;}
+.md-logo{display:flex;align-items:center;gap:8px;color:#fff;text-decoration:none;font-weight:600;font-size:14px;letter-spacing:-.01em;white-space:nowrap;}
+.md-logo svg{width:20px;height:20px;fill:currentColor;flex:none;}
+.md-nav{display:flex;gap:2px;margin-left:auto;overflow-x:auto;scrollbar-width:none;}
 .md-nav::-webkit-scrollbar{display:none;}
-.md-nav a{color:rgba(255,255,255,.85);text-decoration:none;font-size:14px;padding:6px 12px;border-radius:18px;white-space:nowrap;transition:background .15s;}
-.md-nav a:hover{background:rgba(255,255,255,.15);}
-.md-nav a.active{background:#fff;color:var(--md-primary);font-weight:500;}
+.md-nav a{color:rgba(255,255,255,.82);text-decoration:none;font-size:13px;font-weight:400;padding:5px 12px;border-radius:980px;white-space:nowrap;transition:color .15s,background .15s;}
+.md-nav a:hover{color:#fff;}
+.md-nav a.active{background:#fff;color:#1d1d1f;font-weight:600;}
 
-.md-breadcrumb{max-width:920px;margin:72px auto 0;padding:12px 20px 0;font-size:13px;color:var(--md-text-light);}
-.md-breadcrumb a{color:var(--md-primary);text-decoration:none;}
+/* ---------- 面包屑 ---------- */
+.md-breadcrumb{max-width:920px;margin:64px auto 0;padding:0 20px;font-size:13px;color:var(--text-3);}
+.md-breadcrumb a{color:var(--accent-strong);text-decoration:none;}
 .md-breadcrumb a:hover{text-decoration:underline;}
-.md-breadcrumb .sep{margin:0 6px;color:var(--md-text-lighter);}
+.md-breadcrumb .sep{margin:0 6px;color:var(--text-3);}
 
-.md-main{max-width:920px;margin:0 auto;padding:18px 20px 56px;}
+/* ---------- 主内容 ---------- */
+.md-main{max-width:920px;margin:0 auto;padding:16px 20px 64px;}
 
-.md-typeset h1{font-size:29px;font-weight:700;margin:14px 0 4px;letter-spacing:-.2px;}
-.md-page-icon{display:flex;align-items:center;gap:10px;margin:10px 0 2px;}
-.md-page-icon svg{width:30px;height:30px;fill:var(--md-primary);}
-.md-page-sub{color:var(--md-text-light);font-size:14.5px;margin-bottom:6px;}
-.md-typeset h2{font-size:21px;font-weight:600;margin:32px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--md-border);}
-.md-typeset h3{font-size:17px;font-weight:600;margin:20px 0 8px;color:var(--md-primary-dark);}
-.md-typeset p{margin:10px 0;}
-.md-typeset ul,.md-typeset ol{padding-left:1.5em;margin:10px 0;}
-.md-typeset li{margin:5px 0;}
-.md-typeset a{color:var(--md-primary);text-decoration:none;}
+.md-typeset h1{font-size:28px;font-weight:700;letter-spacing:-.02em;line-height:1.15;margin:16px 0 6px;}
+.md-page-icon{display:flex;align-items:center;gap:10px;margin:12px 0 2px;}
+.md-page-icon svg{width:26px;height:26px;fill:var(--accent);}
+.md-page-sub{color:var(--text-2);font-size:14.5px;margin-bottom:8px;}
+.md-typeset h2{font-size:22px;font-weight:600;letter-spacing:-.01em;margin:36px 0 14px;color:var(--text);}
+.md-typeset h3{font-size:17px;font-weight:600;margin:24px 0 10px;color:var(--text);}
+.md-typeset p{margin:12px 0;}
+.md-typeset ul,.md-typeset ol{padding-left:1.5em;margin:12px 0;}
+.md-typeset li{margin:6px 0;}
+.md-typeset a{color:var(--accent-strong);text-decoration:none;}
 .md-typeset a:hover{text-decoration:underline;}
-.md-typeset code{font-family:var(--md-mono);background:var(--md-code-bg);padding:1px 5px;border-radius:4px;font-size:.88em;}
-.md-typeset pre{background:var(--md-code-bg);padding:14px 16px;border-radius:6px;overflow-x:auto;margin:12px 0;font-size:13.5px;line-height:1.6;}
+.md-typeset code{font-family:var(--mono);background:var(--band);padding:2px 6px;border-radius:6px;font-size:.875em;color:#1d1d1f;}
+.md-typeset pre{background:var(--band);padding:16px 18px;border-radius:12px;overflow-x:auto;margin:14px 0;font-size:13.5px;line-height:1.65;}
 .md-typeset pre code{background:none;padding:0;}
 
-.md-table{width:100%;overflow-x:auto;margin:14px 0;border:1px solid var(--md-border);border-radius:6px;}
-table{border-collapse:collapse;width:100%;min-width:560px;font-size:14px;}
-th,td{padding:9px 13px;border-bottom:1px solid var(--md-border);text-align:left;vertical-align:top;}
+/* ---------- 表格 ---------- */
+.md-table{width:100%;overflow-x:auto;margin:16px 0;border:1px solid var(--hairline);border-radius:12px;}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:14.5px;}
+th,td{padding:10px 14px;border-bottom:1px solid var(--hairline);text-align:left;vertical-align:top;}
 tr:last-child td{border-bottom:none;}
-th{background:#F5F5F5;font-weight:600;white-space:nowrap;}
-tbody tr:hover{background:rgba(82,108,254,.05);}
+th{background:var(--band);font-weight:600;white-space:nowrap;}
+tbody tr{transition:background .12s;}
+tbody tr:hover{background:rgba(0,113,227,.045);}
 
-.md-admonition{position:relative;margin:16px 0;padding:12px 16px 12px 44px;border-radius:6px;border-left:4px solid #448AFF;background:rgba(68,138,255,.07);font-size:15px;line-height:1.7;}
-.md-admonition svg{position:absolute;left:14px;top:14px;width:20px;height:20px;fill:#448AFF;flex:none;}
-.md-admonition.note{border-color:#448AFF;background:rgba(68,138,255,.07);}
-.md-admonition.note svg{fill:#448AFF;}
-.md-admonition.warning{border-color:#FF9100;background:rgba(255,145,0,.08);}
-.md-admonition.warning svg{fill:#FF9100;}
-.md-admonition.tip{border-color:#00B0FF;background:rgba(0,176,255,.08);}
-.md-admonition.tip svg{fill:#00B0FF;}
+/* ---------- 提示块 ---------- */
+.md-admonition{position:relative;margin:18px 0;padding:14px 18px 14px 46px;border-radius:12px;background:rgba(0,113,227,.06);font-size:15px;line-height:1.7;}
+.md-admonition svg{position:absolute;left:16px;top:16px;width:20px;height:20px;fill:var(--accent);flex:none;}
+.md-admonition.note{background:rgba(0,113,227,.06);}
+.md-admonition.note svg{fill:var(--accent);}
+.md-admonition.warning{background:rgba(255,149,0,.09);}
+.md-admonition.warning svg{fill:#ff9500;}
+.md-admonition.tip{background:rgba(0,176,255,.08);}
+.md-admonition.tip svg{fill:#00b0ff;}
 
-.md-tag{display:inline-block;background:rgba(64,81,181,.1);color:var(--md-primary-dark);font-size:12px;padding:2px 10px;border-radius:12px;margin:0 4px 4px 0;font-weight:500;}
+/* ---------- 标签 ---------- */
+.md-tag{display:inline-block;background:rgba(0,0,0,.05);color:var(--text);font-size:12.5px;padding:3px 12px;border-radius:980px;margin:0 4px 4px 0;font-weight:500;}
 
-.md-hero{background:linear-gradient(135deg,var(--md-primary) 0%,var(--md-accent) 100%);color:#fff;border-radius:12px;padding:28px 26px;margin:16px 0 24px;box-shadow:0 4px 16px rgba(64,81,181,.25);}
-.md-hero h1{color:#fff;margin:0 0 8px;letter-spacing:-.2px;}
-.md-hero p{color:rgba(255,255,255,.92);margin:6px 0;font-size:15px;}
-.md-hero .hero-tag{display:inline-block;background:rgba(255,255,255,.2);color:#fff;font-size:12px;padding:3px 12px;border-radius:14px;margin-top:8px;}
+/* ---------- Hero（首页 · 灰带大标题） ---------- */
+.md-hero{background:var(--band);border-radius:18px;padding:46px 38px;margin:16px 0 30px;}
+.md-hero h1{color:var(--text);font-size:clamp(28px,4.6vw,40px);font-weight:700;line-height:1.15;letter-spacing:-.02em;margin:0 0 16px;max-width:20em;}
+.md-hero p{color:var(--text-2);margin:6px 0;font-size:16px;}
+.md-hero .hero-tag{display:inline-block;background:rgba(0,0,0,.05);color:var(--text-2);font-size:13px;padding:6px 16px;border-radius:980px;font-weight:500;}
 
-.md-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin:18px 0;}
-.md-card{display:flex;flex-direction:column;gap:8px;background:#fff;border:1px solid var(--md-border);border-radius:10px;padding:18px;text-decoration:none;color:var(--md-text);transition:box-shadow .15s,transform .15s;}
-.md-card:hover{box-shadow:0 4px 14px rgba(64,81,181,.18);transform:translateY(-2px);}
-.md-card svg{width:28px;height:28px;fill:var(--md-primary);}
-.md-card h3{font-size:16px;color:var(--md-text);font-weight:600;}
-.md-card p{font-size:13.5px;color:var(--md-text-light);margin:0;line-height:1.6;}
-.md-card .go{color:var(--md-primary);font-size:13px;font-weight:500;margin-top:auto;}
+/* ---------- 首页卡片（灰瓷片） ---------- */
+.md-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:20px 0;}
+.md-card{display:flex;flex-direction:column;gap:10px;background:var(--band);border-radius:var(--radius);padding:24px;text-decoration:none;color:var(--text);
+  box-shadow:var(--card-shadow);transition:box-shadow .2s,transform .2s;}
+.md-card:hover{box-shadow:var(--card-shadow-hover);transform:translateY(-2px);}
+.md-card svg{width:26px;height:26px;fill:var(--accent);}
+.md-card h3{font-size:16.5px;color:var(--text);font-weight:600;letter-spacing:-.01em;}
+.md-card p{font-size:13.5px;color:var(--text-2);margin:0;line-height:1.65;}
+.md-card .go{align-self:flex-start;display:inline-block;color:var(--accent-strong);font-size:13px;font-weight:500;border:1px solid rgba(0,102,204,.35);border-radius:980px;padding:5px 15px;margin-top:auto;transition:background .15s;}
+.md-card .go:hover{background:rgba(0,102,204,.06);text-decoration:none;}
 
-.md-diagram{margin:18px 0;background:#FAFBFF;border:1px solid var(--md-border);border-radius:10px;padding:16px 12px;text-align:center;}
+/* ---------- 示意图 ---------- */
+.md-diagram{margin:20px 0;background:var(--band);border-radius:var(--radius);padding:20px 14px;text-align:center;}
 .md-diagram svg{max-width:100%;height:auto;}
 
-hr{border:none;border-top:1px solid var(--md-border);margin:30px 0;}
+hr{border:none;border-top:1px solid var(--hairline);margin:36px 0;}
 
-.md-footer{background:#303030;color:rgba(255,255,255,.7);padding:24px 20px 28px;margin-top:40px;font-size:13px;line-height:1.8;}
+/* ---------- 页脚（浅色） ---------- */
+.md-footer{background:var(--band-2);border-top:1px solid var(--hairline);color:var(--text-2);padding:26px 20px 30px;margin-top:48px;font-size:13px;line-height:1.8;}
 .md-footer__inner{max-width:920px;margin:0 auto;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;}
 
-@media (max-width:720px){
-  .md-header__inner{flex-wrap:wrap;padding:8px 12px;gap:6px;}
-  .md-nav{width:100%;order:3;margin-left:0;}
-  .md-breadcrumb{margin-top:98px;padding:10px 14px 0;}
-  .md-main{padding:14px 14px 44px;}
-  .md-typeset h1{font-size:23px;}
-  .md-typeset h2{font-size:18px;}
-  .md-hero{padding:22px 18px;}
+/* ---------- 焦点环 & 动效 ---------- */
+a:focus-visible,.md-card:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:8px;}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;}}
+
+/* ---------- 响应式 ---------- */
+@media (max-width:768px){
+  .md-header__inner{flex-wrap:wrap;height:auto;padding:6px 14px;gap:4px;}
+  .md-nav{width:100%;order:3;margin-left:0;padding-bottom:4px;}
+  .md-breadcrumb{margin-top:96px;padding:0 14px;}
+  .md-main{padding:14px 14px 48px;}
+  .md-hero{padding:34px 24px;border-radius:16px;}
+  .md-typeset h1{font-size:24px;}
+  .md-typeset h2{font-size:19px;}
   .md-cards{grid-template-columns:1fr;}
+  .md-card{padding:20px;}
   th,td{padding:8px 10px;}
   .md-footer__inner{flex-direction:column;gap:6px;}
 }
@@ -116,8 +143,7 @@ hr{border:none;border-top:1px solid var(--md-border);margin:30px 0;}
 </header>
 <div class="md-breadcrumb"><a href="index.html">首页</a></div>
 <main class="md-main md-typeset">
-  <div class="md-page-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
-</div><h1>五维产品分析 · 知识站</h1><p class="md-page-sub">系统性经验总结与知识分享站（方法论维基形态）</p><div class="md-hero">
+  <div class="md-hero">
 <h1>把重复的事做深，把沉淀的路走宽。</h1>
 <span class="hero-tag">手册查阅 + 方法论沉淀 · 双内核</span>
 </div>
@@ -153,11 +179,11 @@ hr{border:none;border-top:1px solid var(--md-border);margin:30px 0;}
 <li><strong>每周五</strong>：打开「模板库」页，按「模板 04 周复盘」回填数据；</li>
 <li><strong>每月末</strong>：迭代方法论词条页与本站版本记录。</li>
 <h2>版本与更新记录</h2>
-<div class="md-table"><table><thead><tr><td>版本</td><td>日期</td><td>说明</td></tr></thead><tbody><tr><td>v2.2</td><td>2026-08-19</td><td>当前版：Material 风格重设计 + 模块化目录</td></tr><tr><td>v1.0</td><td>2026-08-19</td><td>初版：素材库四层 / 四环节闭环</td></tr></tbody></table></div>
+<div class="md-table"><table><thead><tr><td>版本</td><td>日期</td><td>说明</td></tr></thead><tbody><tr><td>v3.0</td><td>2026-08-19</td><td>当前版：Apple 风格 UI 升级</td></tr><tr><td>v1.0</td><td>2026-08-19</td><td>初版：素材库四层 / 四环节闭环</td></tr></tbody></table></div>
 </main>
 <footer class="md-footer">
   <div class="md-footer__inner">
-    <span>五维产品分析 · 知识站 v2.2（Material 风格）</span>
+    <span>五维产品分析 · 知识站 v3.0（Apple 风格）</span>
     <span>2026-08-19 · 每月末迭代 · 内容更新请告知维护者</span>
   </div>
 </footer>
